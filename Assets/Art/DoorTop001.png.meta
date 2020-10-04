@@ -8,6 +8,18 @@ TextureImporter:
   - first:
       213: 4863816523818579
     second: DoorTop001_1
+  - first:
+      213: -7427871423364918435
+    second: DoorTop001_0
+  - first:
+      213: -5369322427224462248
+    second: DoorTop001_1
+  - first:
+      213: 7864121886810692396
+    second: DoorTop001_2
+  - first:
+      213: 3623172489354212960
+    second: DoorTop001_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -143,8 +155,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45be1c4cd45c643e0800000000000000
-      internalID: -2069750040925967532
+      spriteID: d531f058b46eae890800000000000000
+      internalID: -7427871423364918435
       vertices: []
       indices: 
       edges: []
@@ -164,8 +176,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 356a7288d97411000800000000000000
-      internalID: 4863816523818579
+      spriteID: 85c6fb843b55c75b0800000000000000
+      internalID: -5369322427224462248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorTop001_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2bd9bda039f22d60800000000000000
+      internalID: 7864121886810692396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorTop001_3
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 0
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066fce3ce28184230800000000000000
+      internalID: 3623172489354212960
       vertices: []
       indices: 
       edges: []

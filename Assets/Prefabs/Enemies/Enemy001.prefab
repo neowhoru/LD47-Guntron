@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1774294518812228549}
   - component: {fileID: 1774294518812228550}
   - component: {fileID: 369330097}
+  - component: {fileID: 64145610}
   m_Layer: 0
   m_Name: Enemy001
   m_TagString: Enemy
@@ -121,10 +122,10 @@ MonoBehaviour:
   sfx: {fileID: 0}
   isEnabled: 0
   target: {fileID: 0}
-  chaseRadius: 2
-  attakRadius: 3
+  chaseRadius: 4
+  attakRadius: 1
   homePosition: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 2
   startPosition: {x: 0, y: 0, z: 0}
   _gameManager: {fileID: 0}
 --- !u!61 &1774294518812228550
@@ -168,3 +169,19 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   flashDuration: 1
   flashTimesMax: 1
+--- !u!58 &64145610
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774294518812228551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027399004, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.09449607

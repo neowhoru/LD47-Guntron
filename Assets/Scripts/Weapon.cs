@@ -14,10 +14,12 @@ public class Weapon : MonoBehaviour
 
     public Transform target;
     public float bulletSpeed = 50f;
+    public SimpleCamShake simpleCamShake;
 
     // Start is called before the first frame update
     void Start()
     {
+        simpleCamShake = GetComponent<SimpleCamShake>();
         transform.SetParent(transform.parent, true);
         _audioSource = GetComponent<AudioSource>();
         
@@ -36,6 +38,7 @@ public class Weapon : MonoBehaviour
     
     public void ShootBullet()
     {
+        simpleCamShake.ShakeCamera();
         _audioSource.PlayOneShot(sfx);
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;

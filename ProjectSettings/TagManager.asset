@@ -9,6 +9,7 @@ TagManager:
   - Collectable
   - Enemy
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX

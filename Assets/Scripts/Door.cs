@@ -26,8 +26,8 @@ public class Door : MonoBehaviour
     public Sprite openSprite;
     public Sprite closeSprite;
     
-    public GameObject targetDoor; 
-    public bool isFakeDoor = false;
+    public GameObject targetDoor;
+    public bool isFinalDoor = false;
     
     void Start()
     {
@@ -49,11 +49,13 @@ public class Door : MonoBehaviour
     {
         _collider.isTrigger = false;
         _renderer.sprite = closeSprite;
-        if (sfx != null)
-        {
-            _audioSource.PlayOneShot(sfx);    
-        }
-        
+        // if (sfx != null)
+        // {
+        //     _audioSource.PlayOneShot(sfx);    
+        // }
+
+        currentState = DoorState.OPEN;
+
     }
 
     public void OpenDoor()
@@ -65,6 +67,7 @@ public class Door : MonoBehaviour
         {
             _audioSource.PlayOneShot(sfx);    
         }
+        currentState = DoorState.OPEN;
     }
 
 

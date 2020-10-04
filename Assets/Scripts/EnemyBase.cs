@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     private AudioSource _audioSource;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
+    private CircleCollider2D _circleCollider2D;
     public bool isEnabled = false;
     
     public Transform target;
@@ -26,6 +27,7 @@ public class EnemyBase : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
         _gameManager = FindObjectOfType<GameManager>();
         startPosition = transform.position;
     }
@@ -40,6 +42,7 @@ public class EnemyBase : MonoBehaviour
         isEnabled = false;
         _spriteRenderer.enabled = false;
         _collider2D.enabled = false;
+        _circleCollider2D.enabled = false;
     }
 
     public void EnableEnemy()
@@ -48,6 +51,7 @@ public class EnemyBase : MonoBehaviour
         isEnabled = true;
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
+        _circleCollider2D.enabled = true;
     }
     
     void Update()

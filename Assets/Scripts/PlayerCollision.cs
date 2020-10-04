@@ -27,6 +27,7 @@ public class PlayerCollision : MonoBehaviour
                 HandleDoors(other);
                 break;
             case "Room":
+                Debug.Log("UPADTE ROOM");
                 _gameManager.UpdateRoom(other.GetComponent<Room>());
                 other.GetComponent<Room>().EnterRoom();
                 break;
@@ -55,17 +56,28 @@ public class PlayerCollision : MonoBehaviour
     private void HandleDoors(Collider2D other)
     {
         Door theDoor = other.GetComponent<Door>();
+        Debug.Log("Door State "+ theDoor.currentState);
         if (theDoor.currentState.Equals(Door.DoorState.OPEN))
         {
             // Move to the new Room
             DisableVirtualPlayerCameraDamping();
-            TeleportToDoor(theDoor);
-            Invoke("EnableVirtualPlayerCameraDamping", 1);
+            if (!theDoor.isFinalDoor)
+            {
+                TeleportToDoor(theDoor);
+                Invoke("EnableVirtualPlayerCameraDamping", 1);    
+            }
+            else
+            {
+                GetComponent<PlayerMovement>().canMove = false;
+                _gameManager.FinishGame();
+            }
+            
         }
     }
 
     private void TeleportToDoor(Door door)
     {
+        
         Vector2 targetPos = door.targetDoor.transform.position;
         switch (door.targetDoor.GetComponent<Door>().currentDirection)
         {
@@ -83,6 +95,7 @@ public class PlayerCollision : MonoBehaviour
                 break;
         }
 
+        Debug.Log("Teleport to Door " + targetPos);
         GetComponent<PlayerMovement>().TeleportToPosition(targetPos);
     }
 

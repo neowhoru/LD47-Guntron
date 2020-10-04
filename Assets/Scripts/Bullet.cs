@@ -13,8 +13,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.tag.Equals("Player") && !other.tag.Equals("Collectable") && !other.tag.Equals("Untagged"))
+        
+        if (!other.tag.Equals("Player") && !other.tag.Equals("Collectable") && !other.tag.Equals("Untagged") && !other.tag.Equals("Room"))
         {
+            Debug.Log("Trigger with " + other.tag);
             Destroy(gameObject);
         }
     }
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.collider.tag.Equals("Wall"))
         {
+            Debug.Log("Collide with " + other.collider.tag);
             // ToDo: Dust would be nice lol 
             Destroy(gameObject);
         }

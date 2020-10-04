@@ -9,12 +9,12 @@ public class Room : MonoBehaviour
     public string enterMessage = "Fight!"; // ToDo: this could be changed maybe
 
     public GameObject hintObject;
-    public GameObject dustPrefab;
     public GameObject arrowObject;
-    public List<GameObject> enemys = new List<GameObject>();
+    public bool isFinished = false;
 
     public void EnterRoom()
     {
+        isFinished = false;
         arrowObject.gameObject.SetActive(false);
 
         foreach (Transform childObject in transform)
@@ -22,6 +22,10 @@ public class Room : MonoBehaviour
             if (childObject.tag.Equals("Collectable"))
             {
                 childObject.GetComponent<Collectable>().EnableCollectable();
+                if (childObject.GetComponent<Collectable>().type.Equals(Collectable.CollectableType.HINT))
+                {
+                    hintObject = childObject.gameObject;
+                }
             }
 
             if (childObject.tag.Equals("Enemy"))
@@ -34,6 +38,8 @@ public class Room : MonoBehaviour
                 childObject.GetComponent<Door>().CloseDoor();
             }
         }
+        
+        Invoke("DisappearHint",2);
     }
 
     public void EnableArrow()
@@ -42,9 +48,18 @@ public class Room : MonoBehaviour
         arrowObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
+    public void DisappearHint()
+    {
+        hintObject.GetComponent<Collectable>().DisableCollectable();
+    }
+
     private void Update()
     {
-        //CheckForRoomFinishState();
+        if (!isFinished)
+        {
+            CheckForRoomFinishState();    
+        }
+        
     }
 
     public void CheckForRoomFinishState()
@@ -78,22 +93,11 @@ public class Room : MonoBehaviour
 
         if (countCollectable == 0 && countEnemysActive == 0)
         {
+            isFinished = true;
             foreach (GameObject door in doors)
             {
                 door.GetComponent<Door>().OpenDoor();
             }
         }
-    }
-
-
-    public void DisableHintObject()
-    {
-        Vector3 hintObjectPos = hintObject.transform.position;
-        hintObject.gameObject.SetActive(false);
-        if (dustPrefab != null)
-        {
-            Instantiate(dustPrefab, hintObjectPos, Quaternion.identity);
-        }
-        
     }
 }
